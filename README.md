@@ -7,11 +7,11 @@ figuring out all the new HTML5 features.
 
 Controls
 ------------
-spacebar - start or retstart the game.
-p key - pause the game.
-left and right arrow keys - move the paddle
-mouse - move the paddle. (recommended method)
-n - advance to the next level.
+* spacebar - start or retstart the game.
+* p key - pause the game.
+* left and right arrow keys - move the paddle
+* mouse - move the paddle. (recommended method)
+* n - advance to the next level.
 
 Note:
 ------
