@@ -16,8 +16,25 @@ var draw = function (){
 			paddle.xpos = paddle.xpos - 9;
 		}
 		
-		moveBallDetectCollision();
-		ballBrickDetectCollision();
+
+        //ball.xpos = ball.xpos + ball.speedX;
+        //ball.ypos = ball.ypos + ball.speedY;
+        for (var i = 0; i < 15; i++) {
+            ball.xpos = ball.xpos + (ball.speedX / 15 );
+            ball.ypos = ball.ypos + (ball.speedY / 15 );
+
+            if (ballBrickDetectCollision() === true){
+                break; 
+            }
+
+            if (moveBallDetectCollision() === true){
+                ball.xpos = ball.xpos + (ball.speedX / 15 )*10;
+                ball.ypos = ball.ypos + (ball.speedY / 15 )*10;
+                break;
+            }
+
+        }
+
         paddlePowerUpCollision();
 
         calculatePaddleSpeed();

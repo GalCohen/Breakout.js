@@ -1,5 +1,4 @@
 //TODO: ball stuck in paddle bug
-//TODO: ball stuck in wall bug
 //TODO: sound effect for winning, countdown timer
 /********************************* Breakout by Gal Cohen ********************************/
 
@@ -296,15 +295,44 @@ var Ball = function (rad, x, y) {
 
 	this.draw = function () {
         if (this.sizeState === 0){
-            this.radius = ballImg.width / 2 + 2;
-            canvas.drawImage(ballImg, this.xpos, this.ypos, ballImg.width, ballImg.height);
+            //this.radius = ballImg.width / 2 + 2;
+            this.radius = 12;
+            canvas.drawImage(ballImg, this.xpos-this.radius, this.ypos-this.radius, ballImg.width, ballImg.height);
         }else if (this.sizeState === 1){
-            this.radius = ballLargeImg.width / 2 + 2;
-            canvas.drawImage(ballLargeImg, this.xpos, this.ypos, ballLargeImg.width, ballLargeImg.height);
+            //this.radius = ballLargeImg.width / 2 + 2;
+            this.radius = 29; //12;
+            canvas.drawImage(ballLargeImg, this.xpos-+this.radius, this.ypos-this.radius, ballLargeImg.width, ballLargeImg.height);
         }else if (this.sizeState === -1){
-            this.radius = ballSmallImg.width / 2 + 2;
-            canvas.drawImage(ballSmallImg, this.xpos, this.ypos, ballSmallImg.width, ballSmallImg.height);
+            //this.radius = ballSmallImg.width / 2 + 2;
+            this.radius = 8;//29;
+            canvas.drawImage(ballSmallImg, this.xpos-this.radius, this.ypos-this.radius, ballSmallImg.width, ballSmallImg.height);
         } 
+
+		// debug
+/*		canvas.strokeStyle = 'yellow';
+		canvas.beginPath();
+		canvas.moveTo(this.xpos, this.ypos);
+		canvas.lineTo(this.xpos+this.radius, this.ypos);
+		canvas.stroke();
+
+		canvas.strokeStyle = 'yellow';
+		canvas.beginPath();
+		canvas.moveTo(this.xpos, this.ypos);
+		canvas.lineTo(this.xpos-this.radius, this.ypos);
+		canvas.stroke();
+
+		canvas.strokeStyle = 'yellow';
+		canvas.beginPath();
+		canvas.moveTo(this.xpos, this.ypos);
+		canvas.lineTo(this.xpos, this.ypos+this.radius);
+		canvas.stroke();
+
+		canvas.strokeStyle = 'yellow';
+		canvas.beginPath();
+		canvas.moveTo(this.xpos, this.ypos);
+		canvas.lineTo(this.xpos, this.ypos-this.radius);
+		canvas.stroke();
+*/
 	};
 };
 
@@ -324,15 +352,35 @@ var Paddle = function (x, y, w, h) {
 
 	this.draw = function () {
 		if (this.sizeState === 0){
-            this.width = paddleImg.width;
+            //this.width = paddleImg.width;
+            this.width = 80;
             canvas.drawImage(paddleImg, this.xpos, this.ypos, this.width, this.height);
         }else if (this.sizeState === 1){
-            this.width = paddleLargeImg.width;
+            //this.width = paddleLargeImg.width;
+            this.width = 150;
             canvas.drawImage(paddleLargeImg, this.xpos, this.ypos, this.width, this.height);
         }else if (this.sizeState === -1) {
-            this.width = paddleSmallImg.width;
+            //this.width = paddleSmallImg.width;
+            this.width = 50;
            canvas.drawImage(paddleSmallImg, this.xpos, this.ypos, this.width, this.height);
         }
+		//debug
+/*		canvas.strokeStyle = 'yellow';
+		canvas.beginPath();
+		canvas.moveTo(this.xpos,this.ypos);
+		canvas.lineTo(this.xpos, this.ypos+this.height);
+		canvas.stroke();
+		canvas.beginPath();
+		canvas.moveTo(this.xpos + this.width,this.ypos);
+		canvas.lineTo(this.xpos + this.width, this.ypos+ this.height);
+		canvas.stroke();
+
+		canvas.strokeStyle = 'yellow';
+		canvas.beginPath();
+		canvas.moveTo(this.xpos+this.width/2, this.ypos);
+		canvas.lineTo(this.xpos+this.width/2, this.ypos-35);
+		canvas.stroke();
+*/
 	};
 };
 
@@ -566,7 +614,7 @@ var initializeGame = function (nextlev) {
     powerupArray = [];  
     activePowerupArray = []; 
 
-	ball = new Ball(14, WIDTH / 2 - 50, HEIGHT / 2 + 50);
+	ball = new Ball(12, WIDTH / 2 - 50, HEIGHT / 2 + 50);
 	paddle = new Paddle(WIDTH / 2, HEIGHT - 20, 80, 15);
 
     sampledPos = paddle.xpos;
@@ -730,7 +778,7 @@ var PowerUp = function(x, y, t) {
                 //console.log("powerup drawn");
 
                 if (this.ypos + this.speedY > HEIGHT ){
-                    console.log("powerup fell through");
+                    //console.log("powerup fell through");
                     this.state = 4;
                 }
             }
@@ -893,7 +941,7 @@ var randomizePowerUp = function(brickx, bricky){
 };
 
 
-var ball = new Ball(14, WIDTH / 2 - 50, HEIGHT / 2 + 50);
+var ball = new Ball(12, WIDTH / 2 - 50, HEIGHT / 2 + 50);
 var paddle = new Paddle(WIDTH / 2, HEIGHT - 20, 80, 15);
 
 

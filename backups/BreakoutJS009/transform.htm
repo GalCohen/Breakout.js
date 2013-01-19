@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title> Breakout </title>
+    	
+    	<link rel="stylesheet" href="transform.css" type="" />
+    	
+    	<script src="jquery.js" type="text/javascript"></script>
+    	<script src="breakout.js" type="text/javascript"></script>
+     
+     </head>
+   
+     
+     <script type="text/javascript">
+     	var animaNum = 1;
+     
+        function initTransformations()
+         {
+             document.addEventListener("touchstart", function(event){event.preventDefault();}, false);
+         }
+         window.onLoad = initTransformations();
+         
+         
+        $(function () {
+			$(document).keypress(function (event) {
+				if (event.which === 80 ||event.which === 112 ){
+					
+					if (animaNum === 1) {
+						$("#box").css('-webkit-transform', 'rotateX(-90deg)');
+					}else if (animaNum === 2) {
+						$("#box").css('-webkit-transform', 'rotateY(-90deg)');
+					}else if (animaNum === 3) {
+						$("#box").css('-webkit-transform', 'rotateX(-90deg);');
+					}else if (animaNum === 4) {
+						$("#box").css('-webkit-transform', 'rotateY(180deg) rotateX(180deg) ');
+					}else if (animaNum === 5) {
+						$("#box").css('-webkit-transform', 'rotateX(180deg)');
+					}//else if (animaNum === 6) {
+						//$("#box").css('-webkit-transform', 'rotateX(135deg)');
+					//}
+					
+					animaNum = animaNum + 1;
+					animaNum = animaNum % 6;
+					console.log(animaNum);
+				}
+			});
+		});
+				 
+         
+     </script>
+       
+	 <body>
+	 <!--	<section id="main">
+ 			<canvas id="canvas" width="700" height="650" >
+ 				If you see this, your browser does not support this feature. Please use Firefox or Chrome.
+ 			</canvas>
+ 		-->	
+	 	</section>
+	 	
+	 	<div id="view">
+		 	<div id="box">
+		 	    <div class="one">1</div>
+		 	    <div class="two">2</div>
+		 	    <div class="three">3</div>
+		 	    <div class="four">4</div>
+		 	    <div class="five">5</div>
+		 	    <div class="six">6</div>
+		 	</div>
+	 	</div>
+	 	
+	 	
+	 </body>
+	       
+</html>  
