@@ -5,6 +5,8 @@ An HTML5 Breakout game I wrote to learn how to use  <canvas> as well as the audi
 series of classic games I've written. The purpose is exercise in javascript, game development and design principles, and 
 figuring out all the new HTML5 features.
 
+[Click here to play!](https://projects-galcohen.rhcloud.com/breakout)
+
 Controls
 ------------
 * spacebar - start or retstart the game.
