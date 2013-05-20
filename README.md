@@ -7,6 +7,8 @@ figuring out all the new HTML5 features.
 
 [Click here to play!](https://projects-galcohen.rhcloud.com/breakout)
 
+![breakout](breakout_large.jpg)
+
 Controls
 ------------
 * spacebar - start or retstart the game.
