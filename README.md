@@ -1,7 +1,7 @@
 Breakout.js
 ======
 
-An HTML5 Breakout game I wrote to learn how to use  <canvas> as well as the audio API. This is the third game in the
+An HTML5 Breakout game I wrote to learn how to use  `<canvas>` as well as the audio API. This is the third game in the
 series of classic games I've written. The purpose is exercise in javascript, game development and design principles, and 
 figuring out all the new HTML5 features.
 

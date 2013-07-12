@@ -92,13 +92,13 @@ var level = 1;
 var frame = 0;
 var endSoundPlayed = false;
 
-var score = 0; 
+var score = 0;
 var combo = 0;
 var paddleHit = false;
 
-var scoreArray = []; 
-var brickExplosionArray = []; 
-var powerupArray = []; 
+var scoreArray = [];
+var brickExplosionArray = [];
+var powerupArray = [];
 var activePowerupArray =[];
 
 pauseImg = new Image();
@@ -217,14 +217,14 @@ brick1_12.src = 'brick1_12.png';
 
 
 var brickSound = document.createElement('audio');
-var paddleSound =  document.createElement('audio'); 
-var wallSound = document.createElement('audio'); 
-var pauseSound = document.createElement('audio');  
-var endSound = document.createElement('audio');  
-var powerupGoodUpSound = document.createElement('audio');  
-var powerupGoodDownSound = document.createElement('audio');  
-var powerupBadUpSound = document.createElement('audio');  
-var powerupBadDownSound = document.createElement('audio');  
+var paddleSound =  document.createElement('audio');
+var wallSound = document.createElement('audio');
+var pauseSound = document.createElement('audio');
+var endSound = document.createElement('audio');
+var powerupGoodUpSound = document.createElement('audio');
+var powerupGoodDownSound = document.createElement('audio');
+var powerupBadUpSound = document.createElement('audio');
+var powerupBadDownSound = document.createElement('audio');
 
 var audioWorks = false;
 
@@ -240,7 +240,7 @@ if (brickSound.canPlayType('audio/ogg') === "probably" || brickSound.canPlayType
     powerupBadDownSound.setAttribute('src', 'powerupBadDownSound.ogg');
 
 	audioWorks = true;
-	
+
 } else if (brickSound.canPlayType('audio/mpeg') === "probably" || brickSound.canPlayType('audio/mpeg') === "maybe") {
 	brickSound.setAttribute('src', 'brickSound.mp3');
 	paddleSound.setAttribute('src', 'paddleSound.mp3');
@@ -253,7 +253,7 @@ if (brickSound.canPlayType('audio/ogg') === "probably" || brickSound.canPlayType
     powerupBadDownSound.setAttribute('src', 'powerupBadDownSound.mp3');
 
 	audioWorks = true;
-	
+
 } else {
 	brickSound.setAttribute('src', 'brickSound.wav');
 	paddleSound.setAttribute('src', 'paddleSound.wav');
@@ -306,7 +306,7 @@ var Ball = function (rad, x, y) {
             //this.radius = ballSmallImg.width / 2 + 2;
             this.radius = 8;//29;
             canvas.drawImage(ballSmallImg, this.xpos-this.radius, this.ypos-this.radius, ballSmallImg.width, ballSmallImg.height);
-        } 
+        }
 
 		// debug
 /*		canvas.strokeStyle = 'yellow';
@@ -339,8 +339,8 @@ var Ball = function (rad, x, y) {
 
 
 
-/** 
-* The Paddle Object constructor defines the dimensions and location of the paddle, 
+/**
+* The Paddle Object constructor defines the dimensions and location of the paddle,
 * as well as methods such as Paddle.Draw to place the paddle on the canvas.
 */
 var Paddle = function (x, y, w, h) {
@@ -387,8 +387,8 @@ var Paddle = function (x, y, w, h) {
 
 
 
-/** 
-* The Brick Object constructor defines the dimensions and location of the brick, 
+/**
+* The Brick Object constructor defines the dimensions and location of the brick,
 * as well as methods such as Brick.Draw to place the paddle on the canvas.
 */
 var Brick = function (x, y, w, h, brickType) {
@@ -435,7 +435,7 @@ var DrawScore = function(x, y, bonus, scr) {
 	this.ypos = y;
 	this.bonus = bonus;
 	this.score = scr;
-	
+
 	this.draw = function(){
 		if (this.bonus === false){
 			if (this.count < 10) {
@@ -471,7 +471,7 @@ var DrawBrickExplosion = function(x, y, w, h ) {
 	this.ypos = y;
     this.width = w;
     this.height = h;
-	
+
 	this.draw = function(){
         if (this.count < 25){
              switch (this.count){
@@ -551,10 +551,10 @@ var DrawBrickExplosion = function(x, y, w, h ) {
                     break;
 
             }
-            
+
             //this.alpha = this.alpha - 0.1;
 			this.count++;
-        }  
+        }
 	};
 };
 
@@ -568,7 +568,7 @@ var setup = function () {
 	var context = document.getElementById('canvas');
 	canvas = context.getContext('2d');
 
-	
+
 	gameState = SPLASH;
 	splash();
 
@@ -579,7 +579,7 @@ var setup = function () {
 
 
 /**
-* Initializes all the components of the game. to be called whenever starting a new game or 
+* Initializes all the components of the game. to be called whenever starting a new game or
 * restarting the game.
 */
 var initializeGame = function (nextlev) {
@@ -598,7 +598,7 @@ var initializeGame = function (nextlev) {
 
 
 	brickHitCounter = 0;
-	
+
 	endSoundPlayed = false;
 	combo = 0;
 	paddleHit = false;
@@ -609,10 +609,10 @@ var initializeGame = function (nextlev) {
 	canvasMinX = $("#canvas").offset().left;
 	canvasMaxX = canvasMinX + WIDTH;
 
-    scoreArray = []; 
-    brickExplosionArray = []; 
-    powerupArray = [];  
-    activePowerupArray = []; 
+    scoreArray = [];
+    brickExplosionArray = [];
+    powerupArray = [];
+    activePowerupArray = [];
 
 	ball = new Ball(12, WIDTH / 2 - 50, HEIGHT / 2 + 50);
 	paddle = new Paddle(WIDTH / 2, HEIGHT - 20, 80, 15);
@@ -621,7 +621,7 @@ var initializeGame = function (nextlev) {
     lastSampledPos = paddle.xpos;
     currentSpeed = ball.speedY;
 
-	//brick = new Brick(WIDTH / 2, HEIGHT - 25, 68, 28, 1);	
+	//brick = new Brick(WIDTH / 2, HEIGHT - 25, 68, 28, 1);
 	initBrickArray(numBrickColumns, numBrickRows);
 
 	if (nextlev === false) {
@@ -641,7 +641,7 @@ var initializeGame = function (nextlev) {
 
 
 /**
-* Creates a two dimensional array by creating an array of arrays and instantiates it 
+* Creates a two dimensional array by creating an array of arrays and instantiates it
 * with the Brick objects.
 */
 var initBrickArray = function (cols, rows) {
@@ -656,13 +656,13 @@ var initBrickArray = function (cols, rows) {
 	// instantiate the "2d" array by adding a Brick object to each value.
 	for (var p = 0; p < brickArray.length; p++){
 		for (var q = 0; q < brickArray[p].length; q++){
-			
+
 			//give 1 of 4 values to the Brick object. used to color the bricks differently.
 			counter = counter + 1;
 			if (counter > 4){
 				counter = counter % 4;
 			}
-			
+
 			brickArray[p][q] = new Brick(p * 70, q * 30, 68, 28, counter);
 		}
 	}
@@ -689,19 +689,19 @@ var bricksLeft = function () {
 
 
 /*
-* Performs the necessary operations once the ball hits the floor. Includes subtracting a life, 
+* Performs the necessary operations once the ball hits the floor. Includes subtracting a life,
 * resetting the ball, countdown animation, starting the next round.
 */
 var roundOver = function() {
 	livesLeft = livesLeft - 1;
-	
+
 	if (livesLeft < 0){
 		gameState = GAME_OVER;
 	}else{
 		ball.xpos = WIDTH / 2 - 50;
 		ball.ypos =  HEIGHT / 2 + 50;
 		ball.speedX = 0;
-		
+
 		// count down animation
 		gameState = COUNTDOWN_ANIMATION;
 	}
@@ -711,7 +711,7 @@ var roundOver = function() {
 
 /* *
  * This object is responsible for the creation and maintenance of the various powerups the player can pick up.
- * 
+ *
  * */
 var PowerUp = function(x, y, t) {
     this.type = t;
@@ -726,7 +726,7 @@ var PowerUp = function(x, y, t) {
     this.isGood = true;
     this.playedsound = false;
 
-    //according to the type of the powerup, change the duration it is visible for, the image that will be 
+    //according to the type of the powerup, change the duration it is visible for, the image that will be
     //drawn, and the speed at which it falls down the screen.
     switch (this.type){
 
@@ -741,22 +741,22 @@ var PowerUp = function(x, y, t) {
             this.isGood = false;
             break;
         case 3: // increase ball size
-            this.duration = 180; 
+            this.duration = 180;
             this.speedY = 7;
             this.isGood = true;
             break;
         case 4: // decrease ball size
-            this.duration = 210; 
+            this.duration = 210;
             this.speedY = 4;
             this.isGood = false;
             break;
     }
-    
+
     //console.log("x:"+this.xpos+", y:"+this.ypos+", speed:"+this.speedY+", type:"+this.type);
-    
+
 
     this.draw = function(){
-    
+
             if (this.state === 1) {
                 switch(this.type) {
                     case 1:
@@ -783,12 +783,12 @@ var PowerUp = function(x, y, t) {
                 }
             }
     };
-    
+
 
     this.activate = function(){
         //console.log("power up on!");
         this.state = 2;
-        //according to the type of the powerup, change the duration it is visible for, the image that will be 
+        //according to the type of the powerup, change the duration it is visible for, the image that will be
         //drawn, and the speed at which it falls down the screen.
         switch (this.type){
 
@@ -803,12 +803,12 @@ var PowerUp = function(x, y, t) {
                 this.isGood = false;
                 break;
             case 3: // increase ball size
-                this.duration = 130; 
+                this.duration = 130;
                 this.speedY = 7;
                 this.isGood = true;
                 break;
             case 4: // decrease ball size
-                this.duration = 180; 
+                this.duration = 180;
                 this.speedY = 4;
                 this.isGood = false;
                 break;
@@ -827,9 +827,9 @@ var PowerUp = function(x, y, t) {
                 this.state = 3;
                 //console.log("powerup done");
             }
-        }    
+        }
     };
-    
+
 };
 
 
@@ -866,12 +866,12 @@ var removeOppositePowerup = function(type){
     var poweruptoremove;
     for (var t = activePowerupArray.length-1; t >= 0; t--){
         if (activePowerupArray[t].state === 2 && activePowerupArray[t].type === oppType){
-            //activePowerupArray[t].state = 4;           
+            //activePowerupArray[t].state = 4;
            /* if (firstfound === false){
                 poweruptoremove = t;
                 firstfound = true;
             }else if (firstfound === true){
-                activePowerupArray[poweruptoremove].state = 4; 
+                activePowerupArray[poweruptoremove].state = 4;
                 console.log("removed old opposing powerup");
                 break;
             }
@@ -920,7 +920,7 @@ var randomizePowerUp = function(brickx, bricky){
         chosen = true;
     }else if (randomNumber === 15){
         //console.log("powerup increase ball size  randomized");
-        type = 3; 
+        type = 3;
         chosen = true;
     }else if (randomNumber === 20){
         //console.log("powerup decrease ball size randomized");
@@ -937,7 +937,7 @@ var randomizePowerUp = function(brickx, bricky){
             powerupArray.push(new PowerUp(brickx, bricky, type));
          }
     }
-   
+
 };
 
 
